@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: spring-shell
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        boot:
+          allow_jdbc_metadata_access: false
+  shell:
+    interactive:
+      enabled: true
+    history:
+      name: 'product.log'
+
+app:
+  datasource:
+    url: ${DB_URL}
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
