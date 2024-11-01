@@ -34,9 +34,5 @@ public class ProfileShellCommands {
 
         productService.saveProduct(product);
     }
-
-    @ShellMethod("Convert to lower case")
-    public String convertToLowerCase(String expression) {
-        return expression.toLowerCase();
-    }
+    
 }
