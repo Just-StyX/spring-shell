@@ -34,5 +34,10 @@ public class ProfileShellCommands {
 
         productService.saveProduct(product);
     }
-    
+
+    @ShellMethod("This will send an email")
+    public void sendEmail(String email, String message) {
+        
+    }
+
 }
