@@ -9,14 +9,6 @@ import org.springframework.stereotype.Service;
 public class ProductEventListener {
     @EventListener
     public void onNewProduct(NewProductEvent newProductEvent) {
-        var message = """
-                New Product Added
-                ------
-                
-                Product Name: {}
-                Time Added: {}
-                ------
-                """;
-        System.out.printf(String.format(message, newProductEvent.productName(), newProductEvent.offsetDateTime()));
+        System.out.printf(String.format("New Product Added\n------ \n\nProduct Name: %s \nTime Added: %s \n------\n", newProductEvent.getProductName(), newProductEvent.getOffsetDateTime()));
     }
 }

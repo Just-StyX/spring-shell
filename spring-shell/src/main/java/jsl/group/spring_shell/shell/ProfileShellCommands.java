@@ -1,13 +1,38 @@
 package jsl.group.spring_shell.shell;
 
+import jsl.group.spring_shell.model.Product;
+import jsl.group.spring_shell.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValues;
+import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.validation.DataBinder;
+
+import java.math.BigDecimal;
+import java.util.Map;
 
 @ShellComponent
+@RequiredArgsConstructor
 public class ProfileShellCommands {
-    @ShellMethod("Display required space")
-    public long minimumFreeSpace() {
-        return 1_000_000;
+    private final ProductService productService;
+
+    @ShellMethod("This will add product to database")
+    public void addProductToRepository(String productDetails) {
+        var properties = productDetails.split(";");
+        PropertyValues propertyValues = new MutablePropertyValues(Map.of(
+                "productName", properties[0],
+                "productPrice", new BigDecimal(properties[1].trim())
+        ));
+
+        Product product = new Product();
+
+        DataBinder dataBinder = new DataBinder(product);
+        dataBinder.setConversionService(new ApplicationConversionService());
+        dataBinder.bind(propertyValues);
+
+        productService.saveProduct(product);
     }
 
     @ShellMethod("Convert to lower case")
