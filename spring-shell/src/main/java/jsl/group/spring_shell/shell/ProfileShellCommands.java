@@ -37,7 +37,7 @@ public class ProfileShellCommands {
 
     @ShellMethod("This will send an email")
     public void sendEmail(String email, String message) {
-        
+
     }
 
 }

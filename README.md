@@ -1,5 +1,5 @@
 # Spring Shell
-An interactive application using Spring Shell
+An interactive Spring Boot application using Spring Shell
 
 ### Spring Projects
 
