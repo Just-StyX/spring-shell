@@ -1,5 +1,7 @@
 package jsl.group.spring_shell.events;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -13,14 +15,18 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class ProductEventListener {
     private final MessageSource messageSource;
+    private final ObjectMapper objectMapper;
 
     @EventListener
-    public void onNewProduct(NewProductEvent newProductEvent) {
+    public void onNewProduct(NewProductEvent newProductEvent) throws JsonProcessingException {
         var message = messageSource.getMessage(
                 "shell.product-added",
                 new String[]{newProductEvent.getProductName(), newProductEvent.getOffsetDateTime().toString()},
                 newProductEvent.getLocale());
 
         log.info("{}\n", message);
+        System.out.println(objectMapper.writeValueAsString(
+                new CustomMessage(message, newProductEvent)
+        ));
     }
 }
