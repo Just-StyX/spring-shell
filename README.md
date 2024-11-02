@@ -10,6 +10,7 @@ An interactive Spring Boot application using Spring Shell
 - Postgres
 - Spring DataBinder
 - Spring EventListeners
+- Spring Internationalization
 - Spring Environment Variables
 - Spring PropertyValues: MutablePropertyValues
 - Spring ApplicationConversionService/DefaultConversionService
