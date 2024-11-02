@@ -13,4 +13,5 @@ An interactive Spring Boot application using Spring Shell
 - Spring Internationalization
 - Spring Environment Variables
 - Spring PropertyValues: MutablePropertyValues
+- Java/Spring ObjectMapper/Jackson2ObjectMapperBuilder
 - Spring ApplicationConversionService/DefaultConversionService
