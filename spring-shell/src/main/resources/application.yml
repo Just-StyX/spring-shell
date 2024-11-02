@@ -16,6 +16,9 @@ spring:
       enabled: true
     history:
       name: 'product.log'
+  messages:
+    basename: messages.shell.shellcommands
+    encoding: UTF-8
 
 app:
   datasource:

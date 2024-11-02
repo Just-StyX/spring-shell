@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
+import java.util.Locale;
 
 @Getter
 @Setter
@@ -14,4 +15,5 @@ import java.time.OffsetDateTime;
 public class NewProductEvent {
     String productName;
     OffsetDateTime offsetDateTime;
+    Locale locale;
 }

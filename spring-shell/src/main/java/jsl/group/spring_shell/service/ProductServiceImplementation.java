@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +17,8 @@ public class ProductServiceImplementation implements ProductService{
     private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    public void saveProduct(Product product) {
+    public void saveProduct(Product product, Locale locale) {
         Product savedProduct = productRepository.save(product);
-        applicationEventPublisher.publishEvent(new NewProductEvent(savedProduct.getProductName(), OffsetDateTime.now()));
+        applicationEventPublisher.publishEvent(new NewProductEvent(savedProduct.getProductName(), OffsetDateTime.now(), locale));
     }
 }
